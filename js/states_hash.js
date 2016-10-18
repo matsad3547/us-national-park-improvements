@@ -112,31 +112,93 @@ var states_hash = [
   {
   state: 'Nevada',
   abvr: 'NV'
-  }
-  // 'New Hampshire': 'NH',
-  //   'New Jersey': 'NJ',
-  //   'New Mexico': 'NM',
-  //   'New York': 'NY',
-  //   'North Carolina': 'NC',
-  //   'North Dakota': 'ND',
-  //
-  //   'Ohio': 'OH',
-  //   'Oklahoma': 'OK',
-  //   'Oregon': 'OR',
-  //
-  //   'Pennsylvania': 'PA',
-  //
-  //   'Rhode Island': 'RI',
-  //   'South Carolina': 'SC',
-  //   'South Dakota': 'SD',
-  //   'Tennessee': 'TN',
-  //   'Texas': 'TX',
-  //   'Utah': 'UT',
-  //   'Vermont': 'VT',
-  //
-  //   'Virginia': 'VA',
-  //   'Washington': 'WA',
-  //   'West Virginia': 'WV',
-  //   'Wisconsin': 'WI',
-  //   'Wyoming': 'WY'
+  },
+  {
+  state: 'New Hampshire',
+  abvr: 'NH'
+  },
+  {
+  state: 'New Jersey',
+  abvr: 'NJ'
+  },
+  {
+  state: 'New Mexico',
+  abvr: 'NM'
+  },
+  {
+  state: 'New York',
+  abvr: 'NY'
+  },
+  {
+  state: 'North Carolina',
+  abvr: 'NC'
+  },
+  {
+  state: 'North Dakota',
+  abvr: 'ND'
+  },
+  {
+  state: 'Ohio',
+  abvr: 'OH'
+  },
+  {
+  state: 'Oklahoma',
+  abvr: 'OK'
+  },
+  {
+  state: 'Oregon',
+  abvr: 'OR'
+  },
+  {
+  state: 'Pennsylvania',
+  abvr: 'PA'
+  },
+  {
+  state: 'Rhode Island',
+  abvr: 'RI'
+  },
+  {
+  state: 'South Carolina',
+  abvr: 'SC'
+  },
+  {
+  state: 'South Dakota',
+  abvr: 'SD'
+  },
+  {
+  state: 'Tennessee',
+  abvr: 'TN'
+  },
+  {
+  state: 'Texas',
+  abvr: 'TX'
+  },
+  {
+  state: 'Utah',
+  abvr: 'UT'
+  },
+  {
+  state: 'Vermont',
+  abvr: 'VT'
+  },
+  {
+  state: 'Virginia',
+  abvr: 'VA'
+  },
+  {
+  state: 'Washington',
+  abvr: 'WA'
+  },
+  {
+  state: 'West Virginia',
+  abvr: 'WV'
+  },
+  {
+  state: 'Wisconsin',
+  abvr: 'WI'
+  },
+  {
+  state: 'Wyoming',
+  abvr: 'WY'
+  },
   ];
