@@ -1,4 +1,32 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500);
+
+@include responsive-font(5vw, 35px, 150px, 50px);
+
+@-ms-viewport{
+  width: device-width;
+}
+
 * {
 margin: 0;
 padding: 0;
+}
+
+header {
+  width: 100%;
+  background-color: lightblue;
+  padding: 1em;
+}
+
+h1 {
+  display: block;
+}
+
+.searchBox {
+  padding-top: 1em;
+}
+
+.search {
+  display: inline;
+  font-size: 1.25em;
+  /*padding: 1em;*/
 }

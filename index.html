@@ -4,11 +4,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>National Parks by State</title>
-    <link rel="stylesheet" href="/css/master.css" media="screen" title="no title">
+    <link rel="stylesheet" href="./css/main.css" media="screen" title="no title">
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"
+integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+crossorigin="anonymous"></script>
   </head>
   <body>
+    <header>
+      <h1>Improvements to the National Parks by State</h1>
+      <div class="searchBox">
+        <button class="search" type="button" name="button">Search by State</button>
+        <input class="search" type="text" name="name" value="">
+      </div>
+    </header>
+    <main>
+      <div class="numImprov">
+
+      </div>
+    </main>
 
   </body>
   <script src='js/apiCall.js'></script>
+  <script src='js/states_hash.js'></script>
   <script src='js/main.js'></script>
 </html>
