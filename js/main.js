@@ -74,7 +74,13 @@ function getNpProjects(stateAbvr, arr) {
 }
 
 function messager(state, numProjects){
-  let msg = state + ' has ' + numProjects + ' National Parks being improved!';
+  let msg;
+  if (numProjects > 1) {
+    msg = state + ' has ' + numProjects + ' National Parks being improved!';
+  }
+  else if (numProjects = 1){
+    msg = state + ' has ' + numProjects + ' National Park being improved!';
+  }
   return msg;
 }
 
