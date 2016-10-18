@@ -28,5 +28,27 @@ h1 {
 .search {
   display: inline;
   font-size: 1.25em;
+  padding: .25em;
   /*padding: 1em;*/
+}
+
+main {
+  width: 100%;
+  height: auto;
+}
+
+.display {
+  height: 3em;
+  padding: 1em;
+  background-color: rgb(175, 175, 175);
+}
+
+#map {
+  display: block;
+  width: 80%;
+  margin-top: 6em;
+  margin-left: 10%;
+  /*margin: 5em, 0, 0, 10%;*/
+  height: 40em;
+  background-color: lightgrey;
 }

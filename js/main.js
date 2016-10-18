@@ -1,83 +1,88 @@
 // main.js
+"use strict";
 
-var dataProcessing = (function (){
+var data_processing_module = (function() {
   var data = {};
 
-console.log('We are up and running!');
-
-function dataLoad () {
-  return new Promise( function(resolve, reject) {
-    setTimeout( function() {
-      if (ourData) {
-        resolve('got it');
-      }
-      else {
-        reject('no go');
-      }
-    }, 2000);
-  })
-};
-
-var loaded = dataLoad();
-
-loaded.then(function(result) {
-  // console.log(ourData);
-  writeObject(ourData);
-  }, function(err) {
-    console.log(err + ': Try again');
-});
-
-console.log(data);
-
-// function getData() {
-//   writeObject(ourData);
-//   // console.log(ourData);
-//   console.log(ourData[0].national_parks_being_improved);
-//   return ourData;
-// };
-
-function writeObject (arr){
-  arr.map(transcribeData)
-};
-
-function transcribeData (obj) {
-  data = {
-    projects: obj.national_parks_being_improved,
-    state: obj.state
+  function setData(npData){
+    console.log('processing data');
+    data = npData;
+    // console.log(data);
   }
-  console.log(data);
-  return data;
+
+  var clicked = function (){
+    console.log('cheese');
+    let input = npImprovements.searchInput();
+    let abvr = npImprovements.stateAbvr(input);
+    let projects = npImprovements.getNpProjects(abvr, data);
+    let msg = npImprovements.messager(input, projects);
+    npImprovements.display(msg);
+    console.log(msg);
+  }
+
+  return {
+    setData: setData
+  };
+})();
+
+var npImprovements = (function (){
+  var data = {};
+
+  console.log('We are up and running!');
+
+// initialize the map on the "map" div with a given center and zoom
+// var map = L.map('map', {
+//   // layers: tilelayer
+//     center: [38.5, -98.0],
+//     zoom: 13
+// }).setView([38.5, -98.0], 4);
+
+var mymap = L.map('map').setView([51.505, -0.09], 13);
+
+// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token= pk.eyJ1IjoibWF0c2FkIiwiYSI6ImNpdWZyMGp6ZTAwaHkzM21weXJjb3hzOTMifQ.D7oqQqX-t5YlZ5CeOnCVvQ', {
+//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+//     maxZoom: 18,
+//     id: 'northAmerica',
+//     accessToken: pk.eyJ1IjoibWF0c2FkIiwiYSI6ImNpdWZyMGp6ZTAwaHkzM21weXJjb3hzOTMifQ.D7oqQqX-t5YlZ5CeOnCVvQ
+// }).addTo(mymap);
+
+document.querySelector('button').onclick = data_processing_module.clicked;
+
+function display (msg) {
+  document.querySelector('.display').innerHTML = msg;
+}
+
+function searchInput () {
+  let input = document.querySelector('input').value;
+  // console.log(input);
+  return input;
 };
 
-//TODO: Define a method (within data???) for getting at the objects - need a promise???
+function stateAbvr(stateName) {
+  let stateObj = states_hash.find(function (obj) {
+    return obj.state === stateName;
+  })
+  return stateObj.abvr;
+};
 
-//   function getNpProjects (stateAbvr) {
-//     let numProjects = this.national_parks_being_improved;
-//   }
-//   return {
-//     getNumProjects: getNpProjects
-//   }
-// })();
-
-document.querySelector('button').onclick = searchStates;
-
-function searchStates () {
-  let input = document.querySelector('input').value;
-  let stateAbvr = stateID(input)
-  // let msg = input + ' has ' + num + 'National Park improvement projects';
-  display (stateAbvr);
-  console.log(input);
+function getNpProjects(stateAbvr, arr) {
+  let stateObj = arr.find(function (obj) {
+    return obj.state === stateAbvr;
+  })
+  return stateObj.national_parks_being_improved;
 }
 
-function display (input) {
-  document.querySelector('.numImprov').innerHTML = input;
+function messager(state, numProjects){
+  let msg = state + ' has ' + numProjects + ' National Parks being improved!';
+  return msg;
 }
 
-function stateID(stateName) {
-  return states_hash[stateName];
+return {
+  searchInput: searchInput,
+  stateAbvr: stateAbvr,
+  getNpProjects: getNpProjects,
+  messager: messager,
+  display: display
 }
-
-let stateName = 'Idaho';
-console.log(stateID(stateName));
 
 })();
