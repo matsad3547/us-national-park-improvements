@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>National Parks by State</title>
     <link rel="stylesheet" href="./css/main.css" media="screen" title="no title">
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
     <script src="http://code.jquery.com/jquery-3.1.1.min.js"
 integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 crossorigin="anonymous"></script>
@@ -19,12 +20,14 @@ crossorigin="anonymous"></script>
     </header>
     <main>
       <div class="numImprov">
+        <div id="mapid"></div>
 
       </div>
     </main>
 
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src='js/states_hash.js'></script>
+    <script src='js/apiCall.js'></script>
+    <script src='js/main.js'></script>
   </body>
-  <script src='js/apiCall.js'></script>
-  <script src='js/states_hash.js'></script>
-  <script src='js/main.js'></script>
 </html>
