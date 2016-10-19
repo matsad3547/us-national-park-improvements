@@ -11,7 +11,6 @@ var data_processing_module = (function() {
   }
 
   var clicked = function (){
-    console.log('cheese');
     let input = npImprovements.searchInput();
     let abvr = npImprovements.stateAbvr(input);
     let projects = npImprovements.getNpProjects(abvr, data);
