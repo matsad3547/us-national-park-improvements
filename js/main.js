@@ -11,10 +11,12 @@ var data_processing_module = (function() {
   }
 
   var clicked = function (){
+
     let input = npImprovements.searchInput();
     let abvr = npImprovements.stateAbvr(input);
-    let projects = npImprovements.getNpProjects(abvr, data);
+    let projects = npImprovements.getNpProjects(abvr, data, input);
     let msg = npImprovements.messager(input, projects);
+    // console.log('cats');
     npImprovements.display(msg);
     console.log(msg);
   }
@@ -37,13 +39,13 @@ var npImprovements = (function (){
 //     zoom: 13
 // }).setView([38.5, -98.0], 4);
 
-// var mymap = L.map('map').setView([51.505, -0.09], 13);
-//
-// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token= pk.eyJ1IjoibWF0c2FkIiwiYSI6ImNpdWZyMGp6ZTAwaHkzM21weXJjb3hzOTMifQ.D7oqQqX-t5YlZ5CeOnCVvQ', {
+var mymap = L.map('map').setView([51.505, -0.09], 13);
+
+// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 //     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 //     maxZoom: 18,
 //     id: 'northAmerica',
-//     accessToken: pk.eyJ1IjoibWF0c2FkIiwiYSI6ImNpdWZyMGp6ZTAwaHkzM21weXJjb3hzOTMifQ.D7oqQqX-t5YlZ5CeOnCVvQ
+//     accessToken: 'pk.eyJ1IjoibWF0c2FkIiwiYSI6ImNpdWZyMGp6ZTAwaHkzM21weXJjb3hzOTMifQ.D7oqQqX-t5YlZ5CeOnCVvQ'
 // }).addTo(mymap);
 
 document.querySelector('button').onclick = data_processing_module.clicked;
@@ -65,19 +67,29 @@ function stateAbvr(stateName) {
   return stateObj.abvr;
 };
 
+
+//TODO: Add error message for undefined states
+
 function getNpProjects(stateAbvr, arr) {
   let stateObj = arr.find(function (obj) {
-    return obj.state === stateAbvr;
+    if (!(obj.state === stateAbvr)) {
+      let msg = 'This state has no National Parks being improved.'
+      display(msg);
+      return null;
+    }
+    else {
+      return obj.state === stateAbvr;
+    }
   })
   return stateObj.national_parks_being_improved;
-}
+};
 
 function messager(state, numProjects){
   let msg;
   if (numProjects > 1) {
     msg = state + ' has ' + numProjects + ' National Parks being improved!';
   }
-  else if (numProjects = 1){
+  else if (numProjects <= 1){
     msg = state + ' has ' + numProjects + ' National Park being improved!';
   }
   return msg;
