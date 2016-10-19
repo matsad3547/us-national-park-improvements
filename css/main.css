@@ -14,7 +14,7 @@
 
 header {
   width: 100%;
-  height: 10em;
+  height: auto;
   background-image: url('../images/yosemite.jpeg');
   background-repeat: no-repeat;
   background-position: center;
@@ -25,12 +25,15 @@ header {
 h1 {
   display: block;
   padding: .5em;
+  margin-bottom: 2em;
   color: white;
   text-shadow: black 1px 1px;
 }
 
 .searchBox {
-  padding-top: 3em;
+  position: relative;
+  top: -1em;
+  /*padding-top: 3em;*/
 }
 
 .search {
@@ -38,6 +41,10 @@ h1 {
   font-size: 1.25em;
   padding: .25em;
   /*padding: 1em;*/
+}
+
+.button {
+  background-color: rgb(150, 150, 150);
 }
 
 main {
@@ -62,6 +69,6 @@ main {
   margin-top: .5em;
   margin-left: 10%;
   /*margin: 5em, 0, 0, 10%;*/
-  height: 30em;
+  height: 40em;
   background-color: lightgrey;
 }
