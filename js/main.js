@@ -16,7 +16,6 @@ var data_processing_module = (function() {
     let abvr = npImprovements.stateAbvr(input);
     let projects = npImprovements.getNpProjects(abvr, data, input);
     let msg = npImprovements.messager(input, projects);
-    // console.log('cats');
     npImprovements.display(msg);
     console.log(msg);
   }
@@ -56,7 +55,6 @@ function display (msg) {
 
 function searchInput () {
   let input = document.querySelector('input').value;
-  // console.log(input);
   return input;
 };
 
@@ -66,9 +64,6 @@ function stateAbvr(stateName) {
   })
   return stateObj.abvr;
 };
-
-
-//TODO: Add error message for undefined states
 
 function getNpProjects(stateAbvr, arr) {
   let stateObj = arr.find(function (obj) {
