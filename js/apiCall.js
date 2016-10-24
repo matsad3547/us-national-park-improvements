@@ -3,6 +3,7 @@
 /* https://open.whitehouse.gov/ data from the
    Climate Change Adaptation Task Force
 */
+"use strict";
 
 var ourData = {};
 
