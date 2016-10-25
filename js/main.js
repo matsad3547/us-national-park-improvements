@@ -1,6 +1,10 @@
 // main.js
 "use strict";
 
+//TODO: Fix coordinates to apply to correct states
+//TODO: Set popupMsg to zoom map and center on coordinates given
+//TODO: Fix lame message for states without projects
+
 var data_processing_module = (function() {
   var data = {};
 
@@ -12,11 +16,10 @@ var data_processing_module = (function() {
   var clicked = function (){
 
     let srchInput = npImprovements.searchInput();
-    let stateInf = npImprovements.stateAbvr(srchInput);
-    let abvr = stateInf.abvr;
-    let projects = npImprovements.getNpProjects(abvr, data);
-    let msg = npImprovements.messager(input, projects);
-    npImprovements.display(msg);
+    let stateInf =  npImprovements.stateAbvr(srchInput);
+    let projects = npImprovements.getNpProjects(stateInf.abvr, data);
+    let msg = npImprovements.messager(srchInput, projects);
+    npImprovements.popupMsg(msg, stateInf.coords);
     console.log(msg);
   }
 
@@ -30,6 +33,8 @@ var npImprovements = (function (){
   var data = {};
 
   console.log('We are up and running!');
+
+  document.querySelector('button').onclick = data_processing_module.clicked;
 
 var mymap = L.map('map').setView([50, -98.0], 3);
 
@@ -47,15 +52,6 @@ function popupMsg (msg, coords) {
   .openOn(mymap);
 }
 
-
-document.querySelector('button').onclick = data_processing_module.clicked;
-
-function display (msg) {
-  let coords = [32.7, -86.9];
-  popupMsg(msg, coords);
-  // document.querySelector('.display').innerHTML = msg;
-}
-
 function searchInput () {
   let input = document.querySelector('input').value;
   return input;
@@ -65,23 +61,20 @@ function stateAbvr(stateName) {
   let stateObj = states_hash.find(function (obj) {
     return obj.state === stateName;
   })
-  console.log(stateObj.abvr);
-  return stateObj.abvr;
-  // {
-  //   stateObj.abvr,
-  //   stateObj.coordinates
-  // };
+  return {
+    abvr: stateObj.abvr,
+    coords: stateObj.coordinates
+  };
 };
 
 function getNpProjects(stateAbvr, arr) {
   let stateObj = arr.find(function (obj) {
     if (!(obj.state === stateAbvr)) {
       let msg = 'This state has no National Parks being improved.'
-      display(msg);
+      popupMsg(msg, [45, -98.0]);
       return null;
     }
     else {
-      console.log(obj.state === stateAbvr);
       return obj.state === stateAbvr;
     }
   })
@@ -104,7 +97,7 @@ return {
   stateAbvr: stateAbvr,
   getNpProjects: getNpProjects,
   messager: messager,
-  display: display
+  popupMsg: popupMsg
 }
 
 })();
