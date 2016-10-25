@@ -31,19 +31,12 @@ var npImprovements = (function (){
 
   console.log('We are up and running!');
 
-// initialize the map on the "map" div with a given center and zoom
-// var map = L.map('map', {
-//   // layers: tilelayer
-//     center: [38.5, -98.0],
-//     zoom: 13
-// }).setView([38.5, -98.0], 4);
-
-var mymap = L.map('map').setView([51.505, -0.09], 13);
+var mymap = L.map('map').setView([38.5, -98.0], 4);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'northAmerica',
+    maxZoom: 50,
+    id: 'mapbox.outdoors',
     accessToken: 'pk.eyJ1IjoibWF0c2FkIiwiYSI6ImNpdWZyMGp6ZTAwaHkzM21weXJjb3hzOTMifQ.D7oqQqX-t5YlZ5CeOnCVvQ'
 }).addTo(mymap);
 
