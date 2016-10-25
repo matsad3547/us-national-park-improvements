@@ -1,7 +1,6 @@
 // main.js
 "use strict";
 
-//TODO: Fix coordinates to apply to correct states
 //TODO: Set popupMsg to zoom map and center on coordinates given
 //TODO: Fix lame message for states without projects
 
