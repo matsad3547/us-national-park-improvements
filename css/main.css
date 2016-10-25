@@ -33,14 +33,12 @@ h1 {
 .searchBox {
   position: relative;
   top: -1em;
-  /*padding-top: 3em;*/
 }
 
 .search {
   display: inline;
   font-size: 1.25em;
   padding: .25em;
-  /*padding: 1em;*/
 }
 
 .button {
@@ -52,7 +50,7 @@ main {
   height: auto;
 }
 
-.display {
+/*.display {
   height: 1.5em;
   padding: 1em;
   text-align: center;
@@ -61,14 +59,13 @@ main {
   width: 100%;
   color: orange;
   text-shadow: black 1px 1px;
-}
+}*/
 
 #map {
   display: block;
   width: 80%;
-  margin-top: .5em;
+  margin: 3em 0 0 10%;
   margin-left: 10%;
-  /*margin: 5em, 0, 0, 10%;*/
-  height: 40em;
+  height: 45em;
   background-color: lightgrey;
 }
