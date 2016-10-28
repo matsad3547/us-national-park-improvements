@@ -50,22 +50,11 @@ main {
   height: auto;
 }
 
-/*.display {
-  height: 1.5em;
-  padding: 1em;
-  text-align: center;
-  font-size: 2em;
-  font-weight: bold;
-  width: 100%;
-  color: orange;
-  text-shadow: black 1px 1px;
-}*/
-
 #map {
   display: block;
-  width: 80%;
+  width: 70%;
   margin: 3em 0 0 10%;
-  margin-left: 10%;
-  height: 45em;
+  margin-left: 15%;
+  height: 37em;
   background-color: lightgrey;
 }

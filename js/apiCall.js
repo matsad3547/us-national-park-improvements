@@ -1,15 +1,10 @@
 //apiCall.js
-
-/* https://open.whitehouse.gov/ data from the
-   Climate Change Adaptation Task Force
-*/
 "use strict";
 
 var ourData = {};
 
 
-  let urlNP = 'https://open.whitehouse.gov/resource/qswu-k8nh.json'
-  // let urlStates = https://gist.github.com/matsad3547/f1edc675c7ede3f808f746747d3cbfa6.js
+let urlNP = 'https://open.whitehouse.gov/resource/qswu-k8nh.json'
 
 var api_module = function() {
   let url = 'https://open.whitehouse.gov/resource/ybwj-5tg8.json'
@@ -31,6 +26,6 @@ var api_module = function() {
   });
 };
 
-  window.onload = function nationalParkImprovement () {
-    api_module();
-  };
+window.onload = function nationalParkImprovement () {
+  api_module();
+};

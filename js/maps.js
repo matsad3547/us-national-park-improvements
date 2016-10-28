@@ -3,7 +3,7 @@
 var maps = (function() {
 
   var mymap = L.map('map', {
-    center: [50, -98],
+    center: [55, -98],
     zoom: 3,
     minZoom: 3,
     zoomControl: false
@@ -18,14 +18,12 @@ var maps = (function() {
       accessToken: 'pk.eyJ1IjoibWF0c2FkIiwiYSI6ImNpdWZyMGp6ZTAwaHkzM21weXJjb3hzOTMifQ.D7oqQqX-t5YlZ5CeOnCVvQ'
   }).addTo(mymap);
 
-  function popupMsg (msg, coords) {
+  function popupMsg (msg, coords, zoom) {
     L.popup()
     .setLatLng(coords)
     .setContent(msg)
     .openOn(mymap);
-    mymap.setView(coords, 5);
-    // mymap.center(coords);
-    // panTo(coords);
+    mymap.setView(coords, zoom);
   }
 
   return {

@@ -1,8 +1,4 @@
-// main.js
 "use strict";
-
-//TODO: Set popupMsg to zoom map and center on coordinates given
-//TODO: Fix lame message for states without projects
 
 var data_processing_module = (function() {
   var data = {};
@@ -17,8 +13,14 @@ var data_processing_module = (function() {
     let srchInput = npImprovements.searchInput();
     let stateInf =  npImprovements.stateAbvr(srchInput);
     let projects = npImprovements.getNpProjects(stateInf.abvr, data);
-    let msg = npImprovements.messager(srchInput, projects);
-    maps.popupMsg(msg, stateInf.coords);
+    let msg = '';
+    if (projects) {
+      msg = npImprovements.messager(srchInput, projects)
+    }
+    else {
+      msg = srchInput + ' does not have any National Parks being improved.'
+    }
+    maps.popupMsg(msg, stateInf.coords, stateInf.zoom);
     console.log(msg);
   }
 
@@ -35,45 +37,49 @@ var npImprovements = (function (){
 
   document.querySelector('button').onclick = data_processing_module.clicked;
 
-function searchInput () {
-  let input = document.querySelector('input').value;
-  return input;
-};
-
-function stateAbvr(stateName) {
-  let stateObj = states_hash.find(function (obj) {
-    return obj.state === stateName;
-  })
-  return {
-    abvr: stateObj.abvr,
-    coords: stateObj.coordinates
+  function searchInput () {
+    let input = document.querySelector('input').value;
+    return input;
   };
-};
 
-function getNpProjects(stateAbvr, arr) {
-  let stateObj = arr.find(function (obj) {
-    if (!(obj.state === stateAbvr)) {
-      let msg = 'This state has no National Parks being improved.'
-      maps.popupMsg(msg, [45, -98.0]);
-      return null;
+  function stateAbvr(stateName) {
+    let stateObj = states_hash.find(function (obj) {
+      return obj.state === stateName;
+    })
+    return {
+      abvr: stateObj.abvr,
+      coords: stateObj.coordinates,
+      zoom: stateObj.zoom
+    };
+  };
+
+  function getStateObj (stateAbvr, arr) {
+    let stateObj = arr.find( (obj) => obj.state === stateAbvr);
+  return stateObj;
+  };
+
+  function getNpProjects(stateAbvr, arr) {
+    let stateObj = getStateObj(stateAbvr, arr)
+    let result;
+    if (stateObj) {
+      result = stateObj.national_parks_being_improved;
     }
     else {
-      return obj.state === stateAbvr;
+      result = undefined;
     }
-  })
-  return stateObj.national_parks_being_improved;
-};
+    return result;
+  };
 
-function messager(state, numProjects){
-  let msg;
-  if (numProjects > 1) {
-    msg = state + ' has ' + numProjects + ' National Parks being improved!';
-  }
-  else if (numProjects <= 1){
-    msg = state + ' has ' + numProjects + ' National Park being improved!';
-  }
-  return msg;
-}
+  function messager(state, numProjects){
+    let msg;
+    if (numProjects > 1) {
+      msg = state + ' has ' + numProjects + ' National Parks being improved!';
+    }
+    else if (numProjects <= 1){
+      msg = state + ' has ' + numProjects + ' National Park being improved!';
+    }
+    return msg;
+  };
 
 return {
   searchInput: searchInput,
