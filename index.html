@@ -6,13 +6,16 @@
     <title>National Parks by State</title>
     <link rel="stylesheet" href="./css/main.css" media="screen" title="no title">
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+     <link rel="stylesheet" href="https://cdn.rawgit.com/LeaVerou/awesomplete/gh-pages/awesomplete.css">
   </head>
   <body>
     <header>
       <h1>Improvements to the National Parks by State</h1>
       <div class="searchBox">
-        <button class="search button" type="button" name="button">Search by State</button>
-        <input class="search" type="text" name="name" value="">
+        <form class="form" action="index.html" method="get">
+          <button class="search button" type="button" name="button">Search by State</button>
+          <input class="search" type="text" autocomplete="on" name="name" id="states" placeholder="Enter State Name">
+        </form>
       </div>
     </header>
     <main>
@@ -24,6 +27,7 @@
 integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 crossorigin="anonymous"></script>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="https://cdn.rawgit.com/LeaVerou/awesomplete/gh-pages/awesomplete.min.js"></script>
     <script src="js/states_hash.js"></script>
     <script src="js/main.js"></script>
     <script src="js/maps.js"></script>

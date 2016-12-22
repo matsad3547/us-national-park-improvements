@@ -8,8 +8,9 @@ var data_processing_module = (function() {
     data = npData;
   }
 
-  var clicked = function (){
+  var clicked = function (e){
 
+    e.preventDefault();
     let srchInput = npImprovements.searchInput();
     let stateInf =  npImprovements.stateAbvr(srchInput);
     let projects = npImprovements.getNpProjects(stateInf.abvr, data);
@@ -36,6 +37,21 @@ var npImprovements = (function (){
   console.log('We are up and running!');
 
   document.querySelector('button').onclick = data_processing_module.clicked;
+  document.querySelector('form').onsubmit = data_processing_module.clicked;
+
+  const statesList = states_hash.map( function (obj) {
+    return obj.state;
+  })
+
+  var input = document.getElementById("states");
+
+  var awesomplete = new Awesomplete(input, {
+    minChars: 1,
+    maxChars: 5,
+    autoFirst: true
+  });
+
+  awesomplete.list = statesList;
 
   function searchInput () {
     let input = document.querySelector('input').value;
