@@ -33,6 +33,7 @@ h1 {
 .searchBox {
   position: relative;
   top: -1em;
+  z-index: 5;
 }
 
 .search {
@@ -51,10 +52,30 @@ main {
 }
 
 #map {
+  position: relative;
   display: block;
   width: 70%;
   margin: 3em 0 0 10%;
   margin-left: 15%;
   height: 37em;
   background-color: lightgrey;
+  z-index: 1;
 }
+
+.awesomplete > ul > li[aria-selected="true"] {
+  background: hsl(205, 40%, 40%);
+  color: white;
+}
+
+  .awesomplete mark {
+    background: hsl(200, 40%, 50%);
+  }
+
+  .awesomplete li:hover mark {
+    background: hsl(200, 100%, 41%);
+  }
+
+  .awesomplete li[aria-selected="true"] mark {
+    background: hsl(200, 100%, 15%);
+    color: inherit;
+  }

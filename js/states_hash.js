@@ -171,13 +171,13 @@ var states_hash = [
   state: 'New Hampshire',
   abvr: 'NH',
   coordinates: [43.7, -71.6],
-  zoom: 6
+  zoom: 7
   },
   {
   state: 'New Jersey',
   abvr: 'NJ',
   coordinates: [40, -74.7],
-  zoom: 6
+  zoom: 7
   },
   {
   state: 'New Mexico',
@@ -267,7 +267,7 @@ var states_hash = [
   state: 'Vermont',
   abvr: 'VT',
   coordinates: [44.1, -72.7],
-  zoom: 6
+  zoom: 7
   },
   {
   state: 'Virginia',
